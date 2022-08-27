@@ -30,10 +30,10 @@
                 </div>
 
                 <div id="opcionais-container" class="input-container">
-                    <label id="opcionais-title" for="opicionais">Selecione os opicionais: </label>
-                    <div class="checkbox-container" v-for="opicional in opcionaisdata" :key="opicional.id">
-                        <input type="checkbox" name="opicionais" v-model="opicionais" :value="opicional.tipo">
-                        <span> {{ opicional.tipo }}</span>
+                    <label id="opcionais-title" for="opicionais">Selecione os opcionais: </label>
+                    <div class="checkbox-container" v-for="opcional in opcionaisdata" :key="opcional.id">
+                        <input type="checkbox" name="opcionais" v-model="opcionais" :value="opcional.tipo">
+                        <span> {{ opcional.tipo }}</span>
                     </div>
                 </div>
 
@@ -57,7 +57,7 @@
                 nome: null,
                 pao: null,
                 carne: null,
-                opicionais: [],
+                opcionais: [],
                 msg: null
             }
         },
@@ -67,10 +67,42 @@
                 const req = await fetch("http://localhost:3000/ingredientes");
                 const data = await req.json();
 
-                console.log(data)
                 this.paes = data.paes;
                 this.carnes = data.carnes;
                 this.opcionaisdata = data.opcionais;
+            },
+
+            // INSERIR DADOS
+            async createBurger(e) {
+                e.preventDefault()
+
+                const data = {
+                    nome: this.nome,
+                    carne: this.carne,
+                    pao: this.pao,
+                    opcionais: Array.from(this.opcionais),
+                    status: "Solicitado"
+                }
+
+                const datajson = JSON.stringify(data)
+                
+                const req = await fetch('http://localhost:3000/burgers', {
+                    method: "POST",
+                    headers: {"Content-Type":"application/json"},
+                    body: datajson
+                })
+
+                const res = await req.json();
+                
+                // colocar uma mensagem no sitema
+
+                // Limpar os campos
+                this.nome = "";
+                this.carne = "";
+                this.pao = "",
+                this.opcionais = ""
+
+            
             }
         },
         mounted() {
