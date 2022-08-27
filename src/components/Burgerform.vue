@@ -111,8 +111,6 @@
                 this.carne = "";
                 this.pao = "",
                 this.opcionais = ""
-
-            
             }
         },
         mounted() {
