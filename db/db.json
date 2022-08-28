@@ -95,29 +95,8 @@
       "opcionais": [
         "Cheddar"
       ],
-      "status": "Solicitado",
-      "id": 3
-    },
-    {
-      "nome": "Estevao",
-      "carne": "Maminha",
-      "pao": "3 Queijos",
-      "opcionais": [
-        "Bacon"
-      ],
-      "status": "Solicitado",
-      "id": 4
-    },
-    {
-      "nome": "Rui Miranda",
-      "carne": "Maminha",
-      "pao": "3 Queijos",
-      "opcionais": [
-        "Cheddar",
-        "Salame"
-      ],
       "status": "Em produção",
-      "id": 5
+      "id": 3
     }
   ]
 }
